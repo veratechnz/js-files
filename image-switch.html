@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js functions and objects</title>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap" rel="stylesheet">
+	<style>
+		/* CSS Here */
+		body {
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+
+		.weather-icon {
+			display: none;
+			text-align: center;
+			width: 400px;
+		}
+
+		button {
+			padding: 1.2em;
+			margin-right: 3em;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="pageHeading">Good Afternoon NZ</h1>
+	<p id="statement">Weather Forecast: <span id="weather"></span>.</p>
+
+	<hr>
+
+	<button type="button" id="mon">Monday</button>
+	<button type="button" id="tue">Tuesday</button>
+	<button type="button" id="wed">Wednesday</button>
+	<button type="button" id="thu">Thursday</button>
+	<button type="button" id="fri">Friday</button>
+	<button type="button" id="sat">Saturday</button>
+	<button type="button" id="sun">Sunday</button>
+	<!-- <button type="button" id="tellUs">Tell Us The Weather </button> -->
+
+	<hr>
+
+	<img src="img/cloudy.png" alt="" width="100" id="cloudy" class="weather-icon">
+	<img src="img/lightning.png" alt="" width="100" id="lightning" class="weather-icon">
+	<img src="img/rainy.png" alt="" width="100" id="rainy" class="weather-icon">
+	<img src="img/windy.png" alt="" width="100" id="windy" class="weather-icon">
+	<img src="img/sunny.png" alt="" width="100" id="sunny" class="weather-icon">
+	<img src="img/thunder.png" alt="" width="100" id="thunder" class="weather-icon">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<script>
+		// Custom js Here
+
+		// A weather information/data object
+		// Here we use a variable name weatherForecast 
+		// to represent the object data. 
+		var weatherForecast = {
+			// These days of the week are called properties
+			// The weather types next to them are values
+			// All of the values are called strings  ' '
+			// A string is a data type.
+			mon: 'cloudy',
+			tue: 'cloudy',
+			wed: 'rainy',
+			thu: 'thunder',
+			fri: 'windy',
+			sat: 'lightning',
+			sun: 'sunny'
+		}
+
+		// A function that sets up the buttons for the click event
+		function setUpButtonEvents () {
+			// Here we grab the buttons from the html
+			var mon = document.getElementById('mon');
+			var tue = document.getElementById('tue');
+			var wed = document.getElementById('wed');
+			var thu = document.getElementById('thu');
+			var fri = document.getElementById('fri');
+			var sat = document.getElementById('sat');
+			var sun = document.getElementById('sun');
+
+			// Here we grab the weather span from the html
+			var span = document.getElementById('weather');	
+
+			// This is a click event for the mon button in 
+			// the html.
+			mon.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.mon;
+
+				// Show the sunny image with it's '#sunny'
+				// id. 
+
+				$('#rainy').css('display', 'none');
+				$('#cloudy').css('display', 'none');
+				$('#windy').css('display', 'none');
+				$('#lightning').css('display', 'none');
+				$('#thunder').css('display', 'none');
+
+				console.log(weatherForecast.mon);
+
+				// Shows the right image
+				$('#' + weatherForecast.mon).css('display', 'block');
+			};
+
+			// This is a click event for the mon button in 
+			// the html.
+			tue.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.tue;
+
+				// Show the sunny image with it's '#sunny'
+				// id. 
+
+				$('#rainy').css('display', 'none');
+				$('#sunny').css('display', 'none');
+				$('#windy').css('display', 'none');
+				$('#lightning').css('display', 'none');
+				$('#thunder').css('display', 'none');
+
+				$('#cloudy').css('display', 'block');
+			};
+
+			// This is a click event for the mon button in 
+			// the html.
+			wed.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.wed;
+
+				// Show the sunny image with it's '#sunny'
+				// id. 
+
+				$('#cloudy').css('display', 'none');
+				$('#sunny').css('display', 'none');
+				$('#windy').css('display', 'none');
+				$('#lightning').css('display', 'none');
+				$('#thunder').css('display', 'none');
+
+				$('#rainy').css('display', 'block');
+			};
+
+
+			// This is a click event for the mon button in 
+			// the html.
+			thu.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.thu;
+
+				$('#cloudy, #sunny, #windy, #lightning, #rainy').css('display', 'none');
+
+				$('.weather-icon').css('display', 'none');
+
+				// $('#sunny').css('display', 'none');
+				// $('#windy').css('display', 'none');
+				// $('#lightning').css('display', 'none');
+				// $('#rainy').css('display', 'none');
+
+				$('#thunder').css('display', 'block');
+			};
+
+			// This is a click event for the mon button in 
+			// the html.
+			fri.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.fri;
+			};
+
+			// This is a click event for the mon button in 
+			// the html.
+			sat.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.sat;
+			};
+
+			// This is a click event for the mon button in 
+			// the html.
+			sun.onclick = function () {
+				// When we click the button we reference
+				// the weatherForecast object and get
+				// the weather. 
+				span.innerText = weatherForecast.sun;
+			};
+
+		}
+
+		// Call the function
+		setUpButtonEvents();
+
+
+
+
+	</script>
+</body>
+</html>

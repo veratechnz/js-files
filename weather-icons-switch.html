@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js functions and objects</title>
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap" rel="stylesheet">
+	<style>
+		/* CSS Here */
+		body {
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+
+		.weather-icon {
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<h1 id="pageHeading">Good Afternoon NZ</h1>
+	<p id="statement">The weather today is <span id="weather">sunny</span>.</p>
+
+	<hr>
+
+	<button type="button" id="mon">Monday ?</button>
+	<button type="button" id="tue">Tuesday ?</button>
+	<button type="button" id="wed">Wednesday ?</button>
+	<button type="button" id="thu">Thursday ?</button>
+	<button type="button" id="fri">Friday ?</button>
+	<button type="button" id="sat">Saturday ?</button>
+	<button type="button" id="sun">Sunday ?</button>
+	<button type="button" id="tellUs">Tell us what the weather is like ?</button>
+
+	<hr>
+
+	<img src="img/cloudy.png" class="weather-icon" id="cloudy" alt="">
+	<img src="img/lightning.png" class="weather-icon" id="lightning" alt="">
+	<img src="img/rainy.png" class="weather-icon" id="rainy" alt="">
+	<img src="img/sunny.png" class="weather-icon" id="sunny" alt="">
+	<img src="img/thunder.png" class="weather-icon" id="thunder" alt="">
+	<img src="img/windy.png" class="weather-icon" id="windy" alt="">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<script>
+		// Custom js Here
+
+		// A weather information/data object
+		// Here we use a variable name weatherForecast 
+		// to represent the object data. 
+		var weatherForecast = {
+			// These days of the week are called properties
+			// The weather types next to them are values
+			// All of the values are called strings  ' '
+			// A string is a data type.
+			mon: 'sunny',
+			tue: 'cloudy',
+			wed: 'rainy',
+			thu: 'thunder',
+			fri: 'windy',
+			sat: 'fine',
+			sun: ' some showers with fine patches'
+		}
+
+		// var weatherArray = ['sunny', 'cloudy', 'rainy', 'thunder', 'windy', 'fine', 'some showers with fine patches' ];
+
+		// // 1. Function that uses the array above
+		// function workWithTheArray () {
+		// 	// Go to the DOM, grab the span element
+		// 	var span = document.getElementById('weather');
+		// 	// Reference the sixth item in the array 
+		// 	var arrayWeatherItem = weatherArray[5];
+		// 	// Access the span element and update the innerText
+		// 	// property with the arrayItem
+		// 	span.innerText = arrayWeatherItem;
+		// }
+
+		// window.onclick = function () {
+		// 	// Go do stuff
+
+		// 	// 2. Calling the function
+		// 	workWithTheArray();
+		// };
+
+		function setUpButtonEvents () {
+			// This gets the span element
+			var span = document.getElementById('weather');
+
+			// These variables get all of the buttons which represent the 
+			// days of the week
+			var mon = document.getElementById('mon');
+			var tue = document.getElementById('tue');
+			var wed = document.getElementById('wed');
+			var thu = document.getElementById('thu');
+			var fri = document.getElementById('fri');
+			var sat = document.getElementById('sat');
+			var sun = document.getElementById('sun');
+
+			var tellUs = document.getElementById('tellUs');
+
+			// These are several onclick functions which update the 
+			// html span with the value from the correct day of the week
+			// referencing the weatherForecast array
+			mon.onclick = function () {
+				span.innerText = weatherForecast.mon; 
+			}
+
+			tue.onclick = function () {
+				span.innerText = weatherForecast.tue; 
+			}
+
+			wed.onclick = function () {
+				span.innerText = weatherForecast.wed; 
+			}
+
+			thu.onclick = function () {
+				span.innerText = weatherForecast.thu; 
+			}
+
+			fri.onclick = function () {
+				span.innerText = weatherForecast.fri; 
+			}
+
+			sat.onclick = function () {
+				span.innerText = weatherForecast.sat; 
+			}
+
+			sun.onclick = function () {
+				span.innerText = weatherForecast.sun; 
+			}
+
+			tellUs.onclick = function () {
+				var askForWeather = prompt('What is the weather like today?', 'Cloudy???');
+				span.innerText = askForWeather; 
+			}
+
+		}
+
+		// Here we are calling the function
+		setUpButtonEvents();
+
+
+
+
+	</script>
+</body>
+</html>
